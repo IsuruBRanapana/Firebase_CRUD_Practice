@@ -15,6 +15,8 @@ class crudMethods{
       Firestore.instance.collection('testcrud').add(carData).catchError((e){
         print(e);
       });
+    }else{
+      print('You Need to be logged in');
     }
   }
 }

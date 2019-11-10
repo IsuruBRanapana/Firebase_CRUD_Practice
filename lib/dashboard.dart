@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_crud/services/crud.dart';
 
 class DashboardPage extends StatefulWidget{
   @override
@@ -11,6 +12,8 @@ class DashboardPage extends StatefulWidget{
 class _DashboardPageState extends State<DashboardPage>{
   String carModel;
   String carColor;
+
+  crudMethods crudObj=new crudMethods();
   Future<bool> addDialog(BuildContext context) async{
     return showDialog(
       context: context,
@@ -86,7 +89,7 @@ class _DashboardPageState extends State<DashboardPage>{
               },
             )
           ]
-        )
+        );
       }
     );
   }
