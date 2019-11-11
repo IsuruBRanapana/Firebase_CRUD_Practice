@@ -1,4 +1,4 @@
-# firebase_crud
+# crud
 
 A new Flutter project.
 

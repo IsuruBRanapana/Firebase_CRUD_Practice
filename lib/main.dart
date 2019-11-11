@@ -1,46 +1,40 @@
 import 'package:flutter/material.dart';
-import 'package:firebase_crud/dashboard.dart';
-import 'package:firebase_crud/loginpage.dart';
-void main() => runApp(MyApp());
-
+ 
+import 'loginpage.dart';
+import 'dashboard.dart';
+ 
+void main() => runApp(new MyApp());
+ 
 class MyApp extends StatelessWidget {
-  
+  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: MyHomePage(),
-      routes: <String, WidgetBuilder>{
+    return new MaterialApp(
+      home: new MyHomePage(),
+      routes:<String, WidgetBuilder> {
         '/homepage' : (BuildContext context) => DashboardPage()
       },
     );
   }
 }
-
-class MyHomePage extends StatefulWidget{
+ 
+class MyHomePage extends StatefulWidget {
   @override
-  State<StatefulWidget> createState() {
-    return _MyHomePageState();
-  }
+  _MyHomePageState createState() => new _MyHomePageState();
 }
-
-class _MyHomePageState extends State<MyHomePage>{
+ 
+class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(
-          'Crud Sample'),
-          backgroundColor: Colors.blue,
-          centerTitle: true,
+    return new Scaffold(
+      appBar: new AppBar(
+        title: new Text('Crud sample'),
+        backgroundColor: Colors.blue,
+        centerTitle: true,
       ),
-      body: Center(
+      body: new Center(
         child: LoginPage(),
       ),
     );
   }
 }
-
