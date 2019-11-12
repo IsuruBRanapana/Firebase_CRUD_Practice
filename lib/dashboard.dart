@@ -15,6 +15,8 @@ class _DashboardPageState extends State<DashboardPage> {
   String carModel;
   String carColor;
 
+  QuerySnapshot cars;
+
   crudMedthods crudObj = new crudMedthods();
 
   Future<bool> addDialog(BuildContext context) async {
@@ -84,6 +86,16 @@ class _DashboardPageState extends State<DashboardPage> {
   }
 
   @override
+  void initState(){
+    crudObj.getData().then((result){
+      setState(() {
+        cars=result;
+      });
+    });
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return new Scaffold(
         appBar: AppBar(
@@ -97,6 +109,21 @@ class _DashboardPageState extends State<DashboardPage> {
             )
           ],
         ),
-        body: Center());
+        body: _carList());
+  }
+
+  Widget _carList(){
+    if(cars!=null){
+      return ListView.builder(
+        itemCount: cars.documents.length,
+        padding: EdgeInsets.all(5.0),
+        itemBuilder: (context,i){
+          return ListTile(
+            title: Text(cars.documents[i].data['carName']),
+            subtitle: Text(cars.documents[i].data['color']),
+          );
+        },
+      );
+    }
   }
 }
